@@ -11,7 +11,6 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
-
 #import "RCTBaiduMapViewManager.h"
 
 @implementation AppDelegate

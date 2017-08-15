@@ -14,6 +14,10 @@
     NSMutableArray* _annotations;
 }
 
+-(void)setShowUserLocation:(BOOL)showUserLocation {
+    [self setShowUserLocation:showUserLocation];
+}
+
 -(void)setZoom:(float)zoom {
     self.zoomLevel = zoom;
 }

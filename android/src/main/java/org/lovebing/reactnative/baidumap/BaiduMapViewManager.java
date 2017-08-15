@@ -79,6 +79,20 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     }
 
+    @ReactProp(name = "showUserLocation")
+    public void setMyLocationEnabled(MapView mapView, boolean myLocationEnabled) {
+        mapView.setMyLocationEnabled(myLocationEnabled);
+        // public MyLocationConfiguration(MyLocationConfiguration.LocationMode mode,
+        //                boolean enableDirection,
+        //                BitmapDescriptor customMarker,
+        //                int accuracyCircleFillColor,
+        //                int accuracyCircleStrokeColor)
+
+
+        // MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true,mIconLocation);
+        // mapView.setMyLocationConfigeration(config);
+    }
+
     @ReactProp(name = "zoomControlsVisible")
     public void setZoomControlsVisible(MapView mapView, boolean zoomControlsVisible) {
         mapView.showZoomControls(zoomControlsVisible);
