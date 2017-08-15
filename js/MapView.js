@@ -16,7 +16,7 @@ import MapTypes from './MapTypes';
 export default class MapView extends Component {
   static propTypes = {
     ...View.propTypes,
-    showUserLocation: PropTypes.bool,    
+    showsUserLocation: PropTypes.bool,    
     zoomControlsVisible: PropTypes.bool,
     trafficEnabled: PropTypes.bool,
     baiduHeatMapEnabled: PropTypes.bool,
@@ -37,7 +37,7 @@ export default class MapView extends Component {
   };
 
   static defaultProps = {
-    myLocationEnabled: false,    
+    showsUserLocation: false,    
     zoomControlsVisible: true,
     trafficEnabled: false,
     baiduHeatMapEnabled: false,

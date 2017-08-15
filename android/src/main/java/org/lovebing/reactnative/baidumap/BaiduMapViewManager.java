@@ -79,7 +79,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     }
 
-    @ReactProp(name = "showUserLocation")
+    @ReactProp(name = "showsUserLocation")
     public void setMyLocationEnabled(MapView mapView, boolean myLocationEnabled) {
         mapView.getMap().setMyLocationEnabled(myLocationEnabled);
 
