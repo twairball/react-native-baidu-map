@@ -57,6 +57,7 @@ export default class BaiduMapDemo extends Component {
     return (
       <View style={styles.container}>
         <MapView 
+          showsUserLocation={true}
           trafficEnabled={this.state.trafficEnabled}
           baiduHeatMapEnabled={this.state.baiduHeatMapEnabled}
           zoom={this.state.zoom}

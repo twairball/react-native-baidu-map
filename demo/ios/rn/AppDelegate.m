@@ -20,8 +20,6 @@
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
-
-  //jsCodeLocation = [NSURL URLWithString:@"http://192.168.22.102:8081/index.ios.bundle?platform=ios&dev=true"];
   
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"rn"
@@ -35,7 +33,9 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
     
-  [RCTBaiduMapViewManager initSDK:@"sIMQlfmOXhQmPLF1QMh4aBp8zZO9Lb2A"];
+  // [RCTBaiduMapViewManager initSDK:@"sIMQlfmOXhQmPLF1QMh4aBp8zZO9Lb2A"];
+  [RCTBaiduMapViewManager initSDK:@"85PdsMdogeKze872V2LnWqI5nr82mELm"];
+
   return YES;
 }
 
