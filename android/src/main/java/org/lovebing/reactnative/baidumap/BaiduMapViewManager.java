@@ -18,6 +18,9 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.MapViewLayoutParams;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
@@ -79,19 +82,20 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
 
     }
 
-    @ReactProp(name = "showsUserLocation")
-    public void setMyLocationEnabled(MapView mapView, boolean myLocationEnabled) {
-        mapView.getMap().setMyLocationEnabled(myLocationEnabled);
+    @ReactProp(name= "userLocation")
+    public void setMyLocation(MapView mapView, ReadableMap option) {
+        if (mapView.getMap() == null) { return; }
 
-        // public MyLocationConfiguration(MyLocationConfiguration.LocationMode mode,
-        //                boolean enableDirection,
-        //                BitmapDescriptor customMarker,
-        //                int accuracyCircleFillColor,
-        //                int accuracyCircleStrokeColor)
+        if (option == null) {
+            mapView.getMap().setMyLocationEnabled(false);
+        } else {
+            mapView.getMap().setMyLocationEnabled(true);
 
-
-        // MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true,mIconLocation);
-        // mapView.setMyLocationConfigeration(config);
+            MyLocationConfiguration config = MarkerUtil.getLocationConfig(mapView);
+            MyLocationData locData = MarkerUtil.getLocDataFromOption(option);
+            mapView.getMap().setMyLocationData(locData);
+            mapView.getMap().setMyLocationConfigeration(config);
+        }
     }
 
     @ReactProp(name = "zoomControlsVisible")
