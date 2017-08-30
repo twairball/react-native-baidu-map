@@ -7,16 +7,57 @@
 //
 
 #import "RCTBaiduMapView.h"
+#import <BaiduMapAPI_Location/BMKLocationService.h>
+#import <BaiduMapAPI_Utils/BMKGeometry.h>
+
+@interface RCTBaiduMapView ()<BMKLocationServiceDelegate>
+@end
 
 @implementation RCTBaiduMapView {
     BMKMapView* _mapView;
     BMKPointAnnotation* _annotation;
     NSMutableArray* _annotations;
+
+    CLLocationManager *_locationManager;
+    BMKLocationService *_locationService;
 }
 
--(void)setShowsUserLocation:(BOOL)enabled {
-    self.showsUserLocation = enabled;
+- (void)setShowsUserLocation:(BOOL)showsUserLocation
+{    
+    if (self.showsUserLocation != showsUserLocation) {
+        if (showsUserLocation && !_locationService) {
+            _locationService = [BMKLocationService new];
+            _locationService.distanceFilter = 5;
+            _locationService.delegate = self;
+            [_locationService startUserLocationService];
+        } else if (showsUserLocation) {
+            [_locationService startUserLocationService];
+        }else if (!showsUserLocation && _locationService) {
+            [_locationService stopUserLocationService];
+        }
+        super.showsUserLocation = showsUserLocation;
+    }
 }
+
+//- (void)setFollowUserLocation:(BOOL)followUserLocation
+//{
+//    if (self.followUserLocation != followUserLocation) {
+//        if (followUserLocation) {
+//            self.userTrackingMode = BMKUserTrackingModeFollow;
+//        } else {
+//            self.userTrackingMode = BMKUserTrackingModeNone;
+//        }
+//        _followUserLocation = followUserLocation;
+//    }
+//}
+
+//- (void)setUserLocationViewParams:(BMKLocationViewDisplayParam *)userLocationViewParams
+//{
+//    if (self.userLocationViewParams != userLocationViewParams) {
+//        [self updateLocationViewWithParam:userLocationViewParams];
+//        _userLocationViewParams = userLocationViewParams;
+//    }
+//}
 
 -(void)setZoom:(float)zoom {
     self.zoomLevel = zoom;
@@ -107,6 +148,23 @@
     }
     annotation.coordinate = coor;
     annotation.title = title;
+}
+
+
+#pragma mark - BMKLocationServiceDelegate
+
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    if (self.showsUserLocation) {
+        [self updateLocationData:userLocation];
+    }
+}
+
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+{
+    if (self.showsUserLocation) {
+        [self updateLocationData:userLocation];
+    }
 }
 
 

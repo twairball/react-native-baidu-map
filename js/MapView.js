@@ -27,6 +27,7 @@ export default class MapView extends Component {
     markers: PropTypes.array,
 
     userLocation: PropTypes.object, 
+    showsUserLocation: PropTypes.bool, 
 
     childrenPoints: PropTypes.array,
     onMapStatusChangeStart: PropTypes.func,
@@ -40,7 +41,8 @@ export default class MapView extends Component {
   };
 
   static defaultProps = {
-    showsUserLocation: false,    
+    showsUserLocation: false,   
+
     zoomControlsVisible: true,
     trafficEnabled: false,
     baiduHeatMapEnabled: false,

@@ -24,7 +24,7 @@
 -(void)setZoom:(float)zoom;
 -(void)setCenterLatLng:(NSDictionary *)LatLngObj;
 -(void)setMarker:(NSDictionary *)Options;
--(void)setShowsUserLocation:(BOOL)enabled;
+-(void)setShowsUserLocation:(BOOL)showsUserLocation;
 @end
 
 #endif
