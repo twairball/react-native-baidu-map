@@ -3,7 +3,8 @@ import {
   View,
   NativeModules,
   Platform,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  ColorPropType,  
 } from 'react-native';
 
 import React, {
@@ -16,7 +17,6 @@ import MapTypes from './MapTypes';
 export default class MapView extends Component {
   static propTypes = {
     ...View.propTypes,
-    showsUserLocation: PropTypes.bool,    
     zoomControlsVisible: PropTypes.bool,
     trafficEnabled: PropTypes.bool,
     baiduHeatMapEnabled: PropTypes.bool,
@@ -26,9 +26,6 @@ export default class MapView extends Component {
     marker: PropTypes.object,
     markers: PropTypes.array,
 
-    userLocation: PropTypes.object, 
-    showsUserLocation: PropTypes.bool, 
-
     childrenPoints: PropTypes.array,
     onMapStatusChangeStart: PropTypes.func,
     onMapStatusChange: PropTypes.func,
@@ -37,12 +34,51 @@ export default class MapView extends Component {
     onMapClick: PropTypes.func,
     onMapDoubleClick: PropTypes.func,
     onMarkerClick: PropTypes.func,
-    onMapPoiClick: PropTypes.func
+    onMapPoiClick: PropTypes.func,
+
+    /**
+     * User Location
+     * @platform android
+     */
+    userLocation: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }),
+
+    /**
+     * User Location
+     * @platform ios
+     */
+    showsUserLocation: PropTypes.bool, 
+
+    /**
+     * Map overlays
+     */
+    overlays: PropTypes.arrayOf(PropTypes.shape({
+      /**
+       * Polyline coordinates
+       */
+      coordinates: PropTypes.arrayOf(PropTypes.shape({
+        latitude: PropTypes.number.isRequired,
+        longitude: PropTypes.number.isRequired
+      })),
+
+      /**
+       * Line attributes
+       */
+      lineWidth: PropTypes.number,
+      strokeColor: ColorPropType,
+      fillColor: ColorPropType,
+
+      /**
+       * Overlay id
+       */
+      id: PropTypes.string
+    })),
+
   };
 
   static defaultProps = {
-    showsUserLocation: false,   
-
     zoomControlsVisible: true,
     trafficEnabled: false,
     baiduHeatMapEnabled: false,
@@ -52,7 +88,11 @@ export default class MapView extends Component {
     markers: [],
     center: null,
     zoom: 10,
+
+    showsUserLocation: false,       
     userLocation: null, 
+
+    overlays: [],
   };
 
   constructor() {

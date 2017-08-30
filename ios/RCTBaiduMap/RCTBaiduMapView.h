@@ -17,14 +17,25 @@
 #import <BaiduMapAPI_Map/BMKPointAnnotation.h>
 #import <UIKit/UIKit.h>
 
+#import "RCTBaiduMapOverlay.h"
+
 @interface RCTBaiduMapView : BMKMapView <BMKMapViewDelegate>
 
 @property (nonatomic, copy) RCTBubblingEventBlock onChange;
+@property (nonatomic, copy) NSArray<NSString *> *overlayIDs;
+@property (nonatomic, assign) BOOL autoZoomToSpan;
 
 -(void)setZoom:(float)zoom;
 -(void)setCenterLatLng:(NSDictionary *)LatLngObj;
 -(void)setMarker:(NSDictionary *)Options;
+-(void)setMarkers:(NSArray *)markers;
 -(void)setShowsUserLocation:(BOOL)showsUserLocation;
+
+- (void)setOverlays:(NSArray *)overlays;
+
+// - (void)zoomToSpan;
+// - (void)zoomToSpan:(NSArray<RCTBaiduMapAnnotation *> *)annotations andOverlays:(NSArray<RCTBaiduMapOverlay *> *)overlays;
+// - (void)zoomToSpan:(NSArray<CLLocation *> *)locations;
 @end
 
 #endif
