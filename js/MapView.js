@@ -5,6 +5,7 @@ import {
   Platform,
   DeviceEventEmitter,
   ColorPropType,  
+  processColor, 
 } from 'react-native';
 
 import React, {
@@ -53,7 +54,7 @@ export default class MapView extends Component {
 
     /**
      * Map overlays
-     */
+     */    
     overlays: PropTypes.arrayOf(PropTypes.shape({
       /**
        * Polyline coordinates
@@ -67,8 +68,8 @@ export default class MapView extends Component {
        * Line attributes
        */
       lineWidth: PropTypes.number,
-      strokeColor: ColorPropType,
-      fillColor: ColorPropType,
+      strokeColor: PropTypes.string,
+      fillColor: PropTypes.string,
 
       /**
        * Overlay id

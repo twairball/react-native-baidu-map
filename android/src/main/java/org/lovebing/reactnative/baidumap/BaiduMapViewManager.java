@@ -46,6 +46,8 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
     private ReadableArray childrenPoints;
     private HashMap<String, Marker> mMarkerMap = new HashMap<>();
     private HashMap<String, List<Marker>> mMarkersMap = new HashMap<>();
+    private HashMap<String, List<ReactMapOverlay>> mOverlaysMap = new HashMap<>();
+
     private TextView mMarkerText;
 
     public String getName() {
@@ -178,6 +180,50 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
             }
         }
         mMarkersMap.put(key, markers);
+    }
+
+    @ReactProp(name = "overlays")
+    public void setOverlays(MapView mapView, @Nullable ReadableArray options) throws Exception{
+        mapView.getMap().clear();
+
+        // instantiate overlay objects and keep track in hashmap instance
+        String key = "overlays_" + mapView.getId();
+        List<ReactMapOverlay> overlays = mOverlaysMap.get(key);
+        if(overlays == null) {
+            overlays = new ArrayList<>();
+        }
+        for (int i = 0; i < options.size(); i++) {
+            ReadableMap option = options.getMap(i);
+            ReactMapOverlay polyline = new ReactMapOverlay(option);
+
+            if(overlays.size() > i + 1 && overlays.get(i) != null) {
+                overlays.set(i, polyline);
+            }
+            else {
+                overlays.add(i, polyline);
+            }
+            
+            // add
+            polyline.addToMap(mapView.getMap());
+        }
+
+        // remove redundant
+        if(options.size() < overlays.size()) {
+            int start = overlays.size() - 1;
+            int end = options.size();
+            for (int i = start; i >= end; i--) {
+                overlays.get(i).getPolyline().remove();
+                overlays.remove(i);
+            }
+        }
+
+        mOverlaysMap.put(key, overlays);
+
+        // mapView.getMap().setOverlays(overlays);
+
+        // if (this.isMapLoaded && this.mMapView.isAutoZoomToSpan()) {
+        //     this.mMapView.zoomToSpan();
+        // }
     }
 
     @ReactProp(name = "childrenPoints")

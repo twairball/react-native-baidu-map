@@ -47,6 +47,9 @@ public class MarkerUtil {
 
     }
 
+    /**
+     * Current location
+     */
     public static MyLocationConfiguration getLocationConfig(MapView mapView) {
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.mipmap.icon_geo); 
         MyLocationConfiguration config = new MyLocationConfiguration(
