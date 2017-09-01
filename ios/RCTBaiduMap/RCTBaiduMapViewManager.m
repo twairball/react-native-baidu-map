@@ -8,6 +8,7 @@
 
 #import "RCTBaiduMapViewManager.h"
 #import "RCTBaiduMapOverlay.h"
+#import "RCTConvert+BaiduMapKit.h"
 
 @implementation RCTBaiduMapViewManager;
 
@@ -20,7 +21,8 @@ RCT_EXPORT_VIEW_PROPERTY(trafficEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(baiduHeatMapEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(marker, NSDictionary*)
 RCT_EXPORT_VIEW_PROPERTY(markers, NSArray*)
-RCT_EXPORT_VIEW_PROPERTY(overlays, NSArray*)
+RCT_EXPORT_VIEW_PROPERTY(overlays, NSArray<RCTBaiduMapOverlay *>)
+
 
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 

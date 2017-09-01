@@ -308,6 +308,9 @@
 
 - (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(RCTBaiduMapOverlay *)overlay
 {
+    NSLog(@"[mapView viewForOverlay");
+    NSLog(@"%@", overlay);
+
     if ([overlay isKindOfClass:[RCTBaiduMapOverlay class]]) {
         BMKPolylineView *polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
         polylineView.strokeColor = overlay.strokeColor;
