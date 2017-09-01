@@ -305,23 +305,6 @@
     [self setMapStatus:newMapStatus withAnimation:YES];
 }
 
-
-- (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(RCTBaiduMapOverlay *)overlay
-{
-    NSLog(@"[mapView viewForOverlay");
-    NSLog(@"%@", overlay);
-
-    if ([overlay isKindOfClass:[RCTBaiduMapOverlay class]]) {
-        BMKPolylineView *polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
-        polylineView.strokeColor = overlay.strokeColor;
-        polylineView.lineWidth = overlay.lineWidth;
-        polylineView.lineDash = overlay.lineDash;
-        return polylineView;
-    }
-    
-    return nil;
-}
-
 #pragma mark - BMKLocationServiceDelegate
 
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation

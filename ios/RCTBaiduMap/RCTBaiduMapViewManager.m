@@ -46,6 +46,19 @@ RCT_CUSTOM_VIEW_PROPERTY(center, CLLocationCoordinate2D, RCTBaiduMapView) {
     return mapView;
 }
 
+- (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(RCTBaiduMapOverlay *)overlay
+{
+    if ([overlay isKindOfClass:[RCTBaiduMapOverlay class]]) {
+        BMKPolylineView *polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
+        polylineView.strokeColor = overlay.strokeColor;
+        polylineView.lineWidth = overlay.lineWidth;
+        polylineView.lineDash = overlay.lineDash;
+        return polylineView;
+    }
+    
+    return nil;
+}
+
 -(void)mapview:(BMKMapView *)mapView
  onDoubleClick:(CLLocationCoordinate2D)coordinate {
     NSLog(@"onDoubleClick");

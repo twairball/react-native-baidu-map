@@ -12,6 +12,7 @@
 #import <React/RCTConvert+CoreLocation.h>
 // #import "RCTBaiduMapAnnotation.h"
 #import "RCTBaiduMapOverlay.h"
+#import "UIColor+Hex.h"
 
 @implementation RCTConvert (BaiduMapKit)
 
@@ -76,7 +77,9 @@ RCT_ENUM_CONVERTER(BMKMapType, (@{
     
     RCTBaiduMapOverlay *overlay = [RCTBaiduMapOverlay polylineWithCoordinates:coordinates count:locations.count];
     
-    overlay.strokeColor = [self UIColor:json[@"strokeColor"]];
+    // overlay.strokeColor = [self UIColor:json[@"strokeColor"]];
+    overlay.strokeColor = [UIColor colorWithHexString:json[@"strokeColor"]];
+
     overlay.identifier = [self NSString:json[@"id"]];
     overlay.lineWidth = [self CGFloat:json[@"lineWidth"] ?: @1];
     overlay.lineDash = [self BOOL:json[@"dottedLine"] ?: @0];
