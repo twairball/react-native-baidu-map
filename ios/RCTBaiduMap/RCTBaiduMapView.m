@@ -312,6 +312,7 @@
         BMKPolylineView *polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
         polylineView.strokeColor = overlay.strokeColor;
         polylineView.lineWidth = overlay.lineWidth;
+        polylineView.lineDash = overlay.lineDash;
         return polylineView;
     }
     

@@ -12,7 +12,9 @@
 
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, strong) UIColor *strokeColor;
+@property (nonatomic, assign) UIColor *fillColor;
 @property (nonatomic, assign) CGFloat lineWidth;
+@property (nonatomic, assign) BOOL lineDash;
 
 + (instancetype)polylineWithCoordinates:(CLLocationCoordinate2D *)coordinates count:(NSInteger)count;
 
