@@ -39,6 +39,10 @@ public class ReactMapOverlay {
             mOptions.color(color);
         }
 
+        if (overlay.hasKey("dottedLine")) {
+            mOptions.dottedLine(overlay.getBoolean("dottedLine"));
+        }
+
         List<LatLng> coordinateList = new ArrayList<LatLng>();
         if (overlay.hasKey("coordinates")) {
             ReadableArray coordinates = overlay.getArray("coordinates");

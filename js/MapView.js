@@ -70,6 +70,7 @@ export default class MapView extends Component {
       lineWidth: PropTypes.number,
       strokeColor: PropTypes.string,
       fillColor: PropTypes.string,
+      dottedLine: PropTypes.bool,
 
       /**
        * Overlay id
