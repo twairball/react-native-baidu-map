@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1133825F1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133825E1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.m */; };
 		11E4BFD01F56F6B90035D5E5 /* RCTBaiduMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E4BFCF1F56F6B90035D5E5 /* RCTBaiduMapOverlay.m */; };
 		EF154DCB1D56218D003146DF /* BaiduMapModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF3C22621CC2C3BE0099E9B6 /* BaiduMapModule.h */; };
 		EF154DCC1D562193003146DF /* RCTBaiduMapViewManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF6660E71D55E68000DB8D08 /* RCTBaiduMapViewManager.h */; };
@@ -34,6 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1133825D1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+BaiduMapKit.h"; sourceTree = "<group>"; };
+		1133825E1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+BaiduMapKit.m"; sourceTree = "<group>"; };
 		11E4BFCE1F56F6B90035D5E5 /* RCTBaiduMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTBaiduMapOverlay.h; sourceTree = "<group>"; };
 		11E4BFCF1F56F6B90035D5E5 /* RCTBaiduMapOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTBaiduMapOverlay.m; sourceTree = "<group>"; };
 		EF3C22561CC2C30D0099E9B6 /* libRCTBaiduMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTBaiduMap.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +82,8 @@
 		EF3C22581CC2C30D0099E9B6 /* RCTBaiduMap */ = {
 			isa = PBXGroup;
 			children = (
+				1133825D1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.h */,
+				1133825E1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.m */,
 				11E4BFCE1F56F6B90035D5E5 /* RCTBaiduMapOverlay.h */,
 				11E4BFCF1F56F6B90035D5E5 /* RCTBaiduMapOverlay.m */,
 				EF3C22591CC2C30D0099E9B6 /* RCTBaiduMapView.h */,
@@ -151,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1133825F1F59C29B00AD2D0C /* RCTConvert+BaiduMapKit.m in Sources */,
 				EF4ABB0D1DC378CF008E75C9 /* GeolocationModule.m in Sources */,
 				11E4BFD01F56F6B90035D5E5 /* RCTBaiduMapOverlay.m in Sources */,
 				EF4ABB101DC3793B008E75C9 /* BaseModule.m in Sources */,
