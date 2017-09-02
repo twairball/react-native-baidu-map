@@ -46,6 +46,8 @@ RCT_CUSTOM_VIEW_PROPERTY(center, CLLocationCoordinate2D, RCTBaiduMapView) {
     return mapView;
 }
 
+#pragma mark - BMKMapViewDelegate
+
 - (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(RCTBaiduMapOverlay *)overlay
 {
     if ([overlay isKindOfClass:[RCTBaiduMapOverlay class]]) {
@@ -134,7 +136,7 @@ didSelectAnnotationView:(BMKAnnotationView *)view {
 }
 
 -(void)mapStatusDidChanged: (BMKMapView *)mapView	 {
-    NSLog(@"mapStatusDidChanged");
+    // NSLog(@"mapStatusDidChanged");
     CLLocationCoordinate2D targetGeoPt = [mapView getMapStatus].targetGeoPt;
     NSDictionary* event = @{
                             @"type": @"onMapStatusChange",

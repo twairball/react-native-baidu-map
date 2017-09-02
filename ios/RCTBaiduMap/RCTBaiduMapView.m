@@ -15,7 +15,7 @@
 @end
 
 @implementation RCTBaiduMapView {
-    BMKMapView* _mapView;
+    // BMKMapView* _mapView;
     BMKPointAnnotation* _annotation;
     NSMutableArray* _annotations;
 
@@ -23,6 +23,9 @@
     BMKLocationService *_locationService;
 }
 
+/**
+ * User location. 
+ */ 
 - (void)setShowsUserLocation:(BOOL)showsUserLocation
 {    
     if (self.showsUserLocation != showsUserLocation) {
@@ -31,9 +34,12 @@
             _locationService.distanceFilter = 5;
             _locationService.delegate = self;
             [_locationService startUserLocationService];
+            NSLog(@"[BaiduMapView setShowsUserLocation] init locationService");
         } else if (showsUserLocation) {
+            NSLog(@"[BaiduMapView setShowsUserLocation] start location service");
             [_locationService startUserLocationService];
         }else if (!showsUserLocation && _locationService) {
+            NSLog(@"[BaiduMapView setShowsUserLocation] stop location service");
             [_locationService stopUserLocationService];
         }
         super.showsUserLocation = showsUserLocation;
@@ -60,6 +66,9 @@
 //    }
 //}
 
+/**
+ * props
+ */
 -(void)setZoom:(float)zoom {
     self.zoomLevel = zoom;
 }
@@ -71,6 +80,9 @@
     self.centerCoordinate = point;
 }
 
+/**
+ * Markers
+ */
 -(void)setMarker:(NSDictionary *)option {
     NSLog(@"setMarker");
     if(option != nil) {
@@ -317,7 +329,8 @@
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
     if (self.showsUserLocation) {
-        [self updateLocationData:userLocation];
+        // [self updateLocationData:userLocation];
+        NSLog(@"heading is %@",userLocation.heading);
     }
 }
 
